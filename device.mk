@@ -132,10 +132,20 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+    audio.bluetooth.default \
+    android.hardware.bluetooth@1.0.vendor \
+    android.hardware.bluetooth.audio@2.0-impl \
+    liba2dpoffload \
     libbthost_if \
-    libldacBT_bco \
-    vendor.qti.hardware.btconfigstore@1.0.vendor \
-    vendor.qti.hardware.btconfigstore@2.0.vendor
+    libhdmiedid \
+    libhfp \
+    libldacBT_dec \
+    libsndmonitor \
+    vendor.qti.hardware.bluetooth_audio@2.0.vendor
+
+# Broadcastradio
+PRODUCT_PACKAGES += \
+    android.hardware.broadcastradio@1.0-impl
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -170,6 +180,16 @@ PRODUCT_COPY_FILES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    android.frameworks.displayservice@1.0 \
+    android.frameworks.displayservice@1.0.vendor \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.allocator@3.0-impl \
+    android.hardware.graphics.allocator@4.0-impl \
+    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.mapper@2.0-impl-2.1 \
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
     gralloc.sdm660 \
     hwcomposer.sdm660 \
     memtrack.sdm660 \
@@ -192,7 +212,12 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl:64 \
+    android.hardware.drm@1.0-service \
     android.hardware.drm@1.3-service.clearkey \
+    android.hardware.drm@1.0.vendor \
+    android.hardware.drm@1.1.vendor \
+    android.hardware.drm@1.2.vendor \
     android.hardware.drm@1.3.vendor
 
 # FM
@@ -281,6 +306,18 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service \
+    android.hardware.keymaster@4.0-impl \
+    android.hardware.keymaster@4.0-service \
+    android.hardware.keymaster@3.0.vendor \
+    android.hardware.keymaster@4.0.vendor \
+    android.hardware.keymaster@4.1.vendor \
+    android.hardware.gatekeeper@1.0 \
+    android.hardware.gatekeeper@1.0.vendor
+
 # Keylayout
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl \
@@ -366,14 +403,38 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.5.vendor \
-    android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
-    android.hardware.secure_element@1.2.vendor \
     libavservices_minijail.vendor \
     libjson \
-    libprotobuf-cpp-full \
-    librmnetctl
+
+    android.hardware.secure_element@1.0 \
+    android.hardware.secure_element@1.2 \
+    android.hardware.secure_element@1.2.vendor \
+    android.system.net.netd@1.1.vendor \
+    android.hardware.radio@1.5.vendor \
+    android.hardware.radio@1.4.vendor \
+    android.hardware.radio.config@1.2 \
+    android.hardware.radio.config@1.2.vendor \
+    android.hardware.secure_element@1.2.vendor \
+    android.hardware.secure_element@1.1.vendor \
+    android.hardware.secure_element@1.0.vendor \
+    librmnetctl \
+    libprotobuf-cpp-full
+
+PRODUCT_PACKAGES += \
+    ims-ext-common \
+    ims_ext_common.xml \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml \
+    qti-telephony-utils \
+    qti_telephony_utils.xml \
+    rild \
+    telephony-ext
+
+# Neural Networks
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks@1.2 \
+    android.hardware.neuralnetworks@1.2.vendor
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
@@ -392,17 +453,6 @@ PRODUCT_PACKAGES += \
 # Tethering
 PRODUCT_PACKAGES += \
     TetheringConfigOverlay
-
-# Telephony
-PRODUCT_PACKAGES += \
-    qti_telephony_hidl_wrapper.xml \
-    qti_telephony_utils.xml \
-    qti-telephony-hidl-wrapper \
-    qti-telephony-utils \
-    telephony-ext
-
-#PRODUCT_BOOT_JARS += \
-#    telephony-ext
 
 # Thermal
 PRODUCT_PACKAGES += \
